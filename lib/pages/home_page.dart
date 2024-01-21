@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:recipe_app/components/food_item_grid.dart';
 import 'package:recipe_app/components/search_text_field.dart';
+import 'package:recipe_app/controllers/food_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -18,36 +21,33 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color(0xE5D9D9D9),
       ),
-      body: const SafeArea(
-        child: Stack(
-          children: [
-            Positioned(
-              top: 50,
-              left: 40,
-              right: 40,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'What is in your Kitchen?',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  Text(
-                    'Enter some ingredients',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  SearchTextField(),
-                ],
+      body: SafeArea(
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 40).copyWith(top: 40),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'What is in your Kitchen?',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-          ],
+              const Text(
+                'Enter some ingredients',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              const SizedBox(height: 30),
+              const SearchTextField(),
+              const SizedBox(height: 20),
+              FoodItemGrid(),
+            ],
+          ),
         ),
       ),
     );

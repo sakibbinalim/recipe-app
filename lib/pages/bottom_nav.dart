@@ -6,7 +6,7 @@ class BottomNav extends StatelessWidget {
   BottomNav({super.key});
 
   final BottomNavController bottomNavController =
-      Get.put(BottomNavController());
+      Get.find<BottomNavController>();
 
   @override
   Widget build(BuildContext context) {

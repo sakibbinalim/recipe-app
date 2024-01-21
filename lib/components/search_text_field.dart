@@ -5,32 +5,20 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      margin: const EdgeInsets.only(top: 30),
-      decoration: ShapeDecoration(
-        color: const Color(0xFFF1F1F1),
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(width: 2, color: Color(0xFF00B3BF)),
+    return TextField(
+      style: const TextStyle(fontSize: 15),
+      decoration: InputDecoration(
+        prefixIcon: const Icon(Icons.search),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Color(0xFF00B3BF), width: 1.5),
           borderRadius: BorderRadius.circular(10),
         ),
-      ),
-      child: const Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          // mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Icon(
-              Icons.search,
-            ),
-            SizedBox(width: 4),
-            Text(
-              'Type your ingredients',
-              style: TextStyle(color: Color(0xFFAEAEAE), fontSize: 15),
-            ),
-          ],
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+              color: Color.fromARGB(255, 4, 151, 161), width: 2.0),
         ),
+        hintText: 'Type your ingredients',
       ),
     );
   }
