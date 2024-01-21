@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipe_app/controllers/bottom_nav_controller.dart';
-import 'package:recipe_app/pages/add_recipe_page.dart';
-import 'package:recipe_app/pages/category_page.dart';
-import 'package:recipe_app/pages/favorite_page.dart';
-import 'package:recipe_app/pages/home_page.dart';
 
 class BottomNav extends StatelessWidget {
   BottomNav({super.key});
 
-  final BottomNavController _controller = Get.put(BottomNavController());
+  final BottomNavController bottomNavController =
+      Get.put(BottomNavController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() {
-        return _controller.currentPage;
+        return bottomNavController.currentPage;
       }),
       bottomNavigationBar: Obx(() {
         return BottomNavigationBar(
@@ -24,9 +21,10 @@ class BottomNav extends StatelessWidget {
           selectedItemColor: const Color(0xFF00B3BF),
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          currentIndex: _controller.currentIndex.value,
+          selectedIconTheme: const IconThemeData(),
+          currentIndex: bottomNavController.currentIndex.value,
           onTap: (index) {
-            _controller.changePage(index);
+            bottomNavController.changePage(index);
           },
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
