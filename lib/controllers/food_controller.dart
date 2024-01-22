@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 import 'package:recipe_app/models/food_item.dart';
 
 class FoodController extends GetxController {
-  final RxList<FoodItem> _foodItems = <FoodItem>[
+  final RxList<FoodItem> _foodItemsList = <FoodItem>[
     FoodItem(
-      title: 'Sample Food 1',
+      title: 'Chorizo & mozzarella gnocchi bake',
       category: 'Vegetarian',
       calorie: '300 kcal',
       time: '30 mins',
@@ -13,7 +13,7 @@ class FoodController extends GetxController {
       ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
     ),
     FoodItem(
-      title: 'Sample Food 2',
+      title: 'Chorizo & mozzarella gnocchi bake',
       category: 'Non-Vegetarian',
       calorie: '500 kcal',
       time: '45 mins',
@@ -41,9 +41,31 @@ class FoodController extends GetxController {
     ),
   ].obs;
 
-  RxList<FoodItem> get foodItems => _foodItems;
+  final RxList<FoodItem> _filteredFoodItemsList = <FoodItem>[].obs;
+
+  RxList<FoodItem> get foodItemsList => _foodItemsList;
+  RxList<FoodItem> get filteredFoodItemsList => _filteredFoodItemsList;
+
+  @override
+  void onInit() {
+    super.onInit();
+    _filteredFoodItemsList.assignAll(_foodItemsList);
+  }
 
   void addFoodItem(FoodItem foodItem) {
-    _foodItems.add(foodItem);
+    _foodItemsList.add(foodItem);
+  }
+
+  void searchFoodItems(String query) {
+    if (query.isEmpty) {
+      _filteredFoodItemsList.assignAll(_foodItemsList);
+    } else {
+      _filteredFoodItemsList.assignAll(_foodItemsList
+          .where((foodItem) =>
+              foodItem.title.toLowerCase().contains(query.toLowerCase()) ||
+              foodItem.ingredients.any((ingredient) =>
+                  ingredient.toLowerCase().contains(query.toLowerCase())))
+          .toList());
+    }
   }
 }

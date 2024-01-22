@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:recipe_app/components/favorite_icon_widget.dart';
 import 'package:recipe_app/controllers/food_controller.dart';
 import 'package:recipe_app/models/food_item.dart';
 
 class FoodItemGrid extends StatelessWidget {
   final FoodController foodController = Get.find<FoodController>();
+
   FoodItemGrid({super.key});
+
+  void addToFavorite() {}
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +20,13 @@ class FoodItemGrid extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 16,
             mainAxisSpacing: 16,
+            mainAxisExtent: 180,
           ),
-          itemCount: foodController.foodItems.length,
+          itemCount: foodController.filteredFoodItemsList.length,
           itemBuilder: (BuildContext context, int index) {
-            FoodItem foodItem = foodController.foodItems[index];
-            return _buildFoodItemCard(foodItem);
+            FoodItem filteredFoodItem =
+                foodController.filteredFoodItemsList[index];
+            return _buildFoodItemCard(filteredFoodItem);
           },
         );
       }),
@@ -28,50 +34,55 @@ class FoodItemGrid extends StatelessWidget {
   }
 
   Widget _buildFoodItemCard(FoodItem foodItem) {
-    return Card(
-      // elevation: 4.0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(12.0),
-              topRight: Radius.circular(12.0),
-            ),
-            child: Image.asset(
-              foodItem.coverImage,
-              height: 120.0,
-              width: double.infinity,
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18),
+            image: DecorationImage(
+              image: AssetImage(foodItem.coverImage),
               fit: BoxFit.cover,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Stack(
               children: [
                 Text(
                   foodItem.title,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
+                  style: TextStyle(
+                    // color: Colors.white,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w700,
+                    foreground: Paint()
+                      ..style = PaintingStyle.stroke
+                      ..strokeWidth = 1.5
+                      ..color = Colors.black,
                   ),
                 ),
-                const SizedBox(height: 4.0),
                 Text(
-                  foodItem.category,
+                  foodItem.title,
                   style: const TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.grey,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
                   ),
                 ),
               ],
             ),
           ),
-        ],
-      ),
+        ),
+        Align(
+          alignment: Alignment.topRight,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: FavoriteIconWidget(onTapFavoriteIcon: addToFavorite),
+          ),
+        ),
+      ],
     );
   }
 }

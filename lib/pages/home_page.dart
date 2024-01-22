@@ -5,10 +5,13 @@ import 'package:recipe_app/components/search_text_field.dart';
 import 'package:recipe_app/controllers/food_controller.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final TextEditingController searchController = TextEditingController();
+
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final FoodController foodController = Get.find<FoodController>();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -43,7 +46,10 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-              const SearchTextField(),
+              SearchTextField(
+                searchController: searchController,
+                onSearch: (query) => foodController.searchFoodItems(query),
+              ),
               const SizedBox(height: 20),
               FoodItemGrid(),
             ],

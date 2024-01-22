@@ -9,7 +9,7 @@ class BottomNavController extends GetxController {
   var currentIndex = 0.obs;
 
   List<Widget> pages = [
-    const HomePage(),
+    HomePage(),
     const CategoryPage(),
     const FavoritePage(),
     const AddRecipePage(),

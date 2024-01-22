@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
 class SearchTextField extends StatelessWidget {
-  const SearchTextField({super.key});
+  final TextEditingController searchController;
+  final Function(String) onSearch;
+
+  const SearchTextField(
+      {super.key, required this.searchController, required this.onSearch});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: searchController,
       style: const TextStyle(fontSize: 15),
       decoration: InputDecoration(
+        fillColor: const Color(0xFFF1F1F1),
+        filled: true,
         prefixIcon: const Icon(Icons.search),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Color(0xFF00B3BF), width: 1.5),
@@ -20,6 +27,7 @@ class SearchTextField extends StatelessWidget {
         ),
         hintText: 'Type your ingredients',
       ),
+      onChanged: (query) => onSearch(query),
     );
   }
 }
