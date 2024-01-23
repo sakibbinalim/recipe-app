@@ -5,9 +5,7 @@ import 'package:recipe_app/components/search_text_field.dart';
 import 'package:recipe_app/controllers/food_controller.dart';
 
 class HomePage extends StatelessWidget {
-  final TextEditingController searchController = TextEditingController();
-
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +45,6 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               SearchTextField(
-                searchController: searchController,
                 onSearch: (query) => foodController.searchFoodItems(query),
               ),
               const SizedBox(height: 20),

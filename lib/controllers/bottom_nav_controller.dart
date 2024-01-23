@@ -12,7 +12,7 @@ class BottomNavController extends GetxController {
     HomePage(),
     const CategoryPage(),
     const FavoritePage(),
-    const AddRecipePage(),
+    AddRecipePage(),
   ];
 
   Widget get currentPage => pages[currentIndex.value];

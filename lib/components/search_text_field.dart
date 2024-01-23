@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class SearchTextField extends StatelessWidget {
-  final TextEditingController searchController;
   final Function(String) onSearch;
 
-  const SearchTextField(
-      {super.key, required this.searchController, required this.onSearch});
+  const SearchTextField({super.key, required this.onSearch});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: searchController,
+      onTapOutside: (event) {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       style: const TextStyle(fontSize: 15),
       decoration: InputDecoration(
         fillColor: const Color(0xFFF1F1F1),
