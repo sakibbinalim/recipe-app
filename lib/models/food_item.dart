@@ -7,16 +7,16 @@ class FoodItem {
   final String title;
   final String category;
   final String calorie;
-  final String time;
-  final String coverImage;
+  final String? time;
+  final String? coverImage;
   final String description;
   final List<String> ingredients;
   FoodItem({
     required this.title,
     required this.category,
     required this.calorie,
-    required this.time,
-    required this.coverImage,
+    this.time,
+    this.coverImage,
     required this.description,
     required this.ingredients,
   });

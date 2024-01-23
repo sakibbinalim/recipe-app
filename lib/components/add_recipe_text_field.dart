@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 class AddRecipeTextField extends StatelessWidget {
   final String textFieldTitle;
+  final TextEditingController textController;
 
-  const AddRecipeTextField({super.key, required this.textFieldTitle});
+  const AddRecipeTextField(
+      {super.key, required this.textFieldTitle, required this.textController});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: textController,
       onTapOutside: (event) {
         FocusManager.instance.primaryFocus?.unfocus();
       },

@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:recipe_app/components/add_recipe_text_field.dart';
+import 'package:recipe_app/controllers/food_controller.dart';
+import 'package:recipe_app/models/food_item.dart';
 
 class AddRecipePage extends StatelessWidget {
   const AddRecipePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final FoodController foodController = Get.find<FoodController>();
+    final Map<String, TextEditingController> textControllers = {
+      'Name': TextEditingController(),
+      'Category': TextEditingController(),
+      'Description': TextEditingController(),
+      'Ingredients': TextEditingController(),
+      'Calories': TextEditingController(),
+    };
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -23,29 +34,13 @@ class AddRecipePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const AddRecipeTextField(
-                textFieldTitle: 'Name',
-              ),
-              const SizedBox(height: 20),
-              const AddRecipeTextField(
-                textFieldTitle: 'Category',
-              ),
-              const SizedBox(height: 20),
-              const AddRecipeTextField(
-                textFieldTitle: 'Description',
-              ),
-              const SizedBox(height: 20),
-              const AddRecipeTextField(
-                textFieldTitle: 'Ingredients',
-              ),
-              const SizedBox(height: 20),
-              const AddRecipeTextField(
-                textFieldTitle: 'Calories',
-              ),
-              const SizedBox(height: 20),
-              const AddRecipeTextField(
-                textFieldTitle: 'Upload Image',
-              ),
+              for (var entry in textControllers.entries) ...[
+                AddRecipeTextField(
+                  textFieldTitle: entry.key,
+                  textController: entry.value,
+                ),
+                const SizedBox(height: 20),
+              ],
               const SizedBox(height: 20),
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
@@ -67,7 +62,20 @@ class AddRecipePage extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Map<String, String> values = {};
+                        textControllers.forEach((key, controller) {
+                          values[key] = controller.text;
+                        });
+
+                        FoodItem newFoodItem = FoodItem(
+                          title: values['Name'] ?? '',
+                          category: values['Category'] ?? '',
+                          description: values['Description'] ?? '',
+                          ingredients: values['Ingredients']?.split(',') ?? [],
+                          calorie: values['Calories'] ?? '',
+                        );
+                      },
                       child: const Text('Save Recipe'),
                     ),
                   ],
