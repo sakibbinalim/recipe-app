@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipe_app/components/add_recipe_text_field.dart';
+import 'package:recipe_app/controllers/bottom_nav_controller.dart';
 import 'package:recipe_app/controllers/food_controller.dart';
 import 'package:recipe_app/models/food_item.dart';
+import 'package:recipe_app/pages/home_page.dart';
 
 class AddRecipePage extends StatelessWidget {
   const AddRecipePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final BottomNavController bottomNavController =
+        Get.find<BottomNavController>();
     final FoodController foodController = Get.find<FoodController>();
     final Map<String, TextEditingController> textControllers = {
       'Name': TextEditingController(),
@@ -41,7 +45,6 @@ class AddRecipePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
               ],
-              const SizedBox(height: 20),
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Stack(
@@ -75,6 +78,9 @@ class AddRecipePage extends StatelessWidget {
                           ingredients: values['Ingredients']?.split(',') ?? [],
                           calorie: values['Calories'] ?? '',
                         );
+                        print('New food item: $newFoodItem');
+                        foodController.addFoodItem(newFoodItem);
+                        bottomNavController.changePage(0);
                       },
                       child: const Text('Save Recipe'),
                     ),

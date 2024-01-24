@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               SearchTextField(
                 onSearch: (query) => foodController.searchFoodItems(query),
               ),

@@ -54,6 +54,7 @@ class FoodController extends GetxController {
 
   void addFoodItem(FoodItem foodItem) {
     _foodItemsList.add(foodItem);
+    searchFoodItems("");
   }
 
   void searchFoodItems(String query) {

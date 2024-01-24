@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipe_app/components/favorite_icon_widget.dart';
@@ -40,7 +42,9 @@ class FoodItemGrid extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
             image: DecorationImage(
-              image: AssetImage(foodItem.coverImage ?? ""),
+              image: foodItem.coverImage?.isNotEmpty == true
+                  ? AssetImage(foodItem.coverImage!)
+                  : const AssetImage('assets/images/placeholder.png'),
               fit: BoxFit.cover,
             ),
           ),
@@ -59,7 +63,7 @@ class FoodItemGrid extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     foreground: Paint()
                       ..style = PaintingStyle.stroke
-                      ..strokeWidth = 1.5
+                      ..strokeWidth = 1.0
                       ..color = Colors.black,
                   ),
                 ),
