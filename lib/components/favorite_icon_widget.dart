@@ -8,6 +8,7 @@ class FavoriteIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
@@ -17,7 +18,7 @@ class FavoriteIconWidget extends StatelessWidget {
         child: Icon(
           Icons.favorite_border,
           color: Colors.grey.shade600,
-          size: 20,
+          size: 18,
         ),
       ),
     );

@@ -42,9 +42,11 @@ class FoodController extends GetxController {
   ].obs;
 
   final RxList<FoodItem> _filteredFoodItemsList = <FoodItem>[].obs;
+  final RxList<FoodItem> _favoriteFoodItemsList = <FoodItem>[].obs;
 
   RxList<FoodItem> get foodItemsList => _foodItemsList;
   RxList<FoodItem> get filteredFoodItemsList => _filteredFoodItemsList;
+  RxList<FoodItem> get favoriteFoodItemsList => _favoriteFoodItemsList;
 
   @override
   void onInit() {
@@ -55,6 +57,10 @@ class FoodController extends GetxController {
   void addFoodItem(FoodItem foodItem) {
     _foodItemsList.add(foodItem);
     searchFoodItems("");
+  }
+
+  void addFavoriteFoodItem(FoodItem foodItem) {
+    _favoriteFoodItemsList.add(foodItem);
   }
 
   void searchFoodItems(String query) {

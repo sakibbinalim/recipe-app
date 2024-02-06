@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipe_app/components/favorite_icon_widget.dart';
@@ -11,7 +9,9 @@ class FoodItemGrid extends StatelessWidget {
 
   FoodItemGrid({super.key});
 
-  void addToFavorite() {}
+  void addToFavorite(FoodItem favoriteFoodItem) {
+    foodController.addFavoriteFoodItem(favoriteFoodItem);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,11 @@ class FoodItemGrid extends StatelessWidget {
           alignment: Alignment.topRight,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
-            child: FavoriteIconWidget(onTapFavoriteIcon: addToFavorite),
+            child: FavoriteIconWidget(
+              onTapFavoriteIcon: () {
+                addToFavorite(foodItem);
+              },
+            ),
           ),
         ),
       ],
