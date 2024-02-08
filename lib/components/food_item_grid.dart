@@ -32,6 +32,8 @@ class FoodItemGrid extends StatelessWidget {
   }
 
   Widget _buildFoodItemCard(FoodItem foodItem) {
+    bool isFavorite = foodController.favoriteFoodItemsList.contains(foodItem);
+
     return Stack(
       children: [
         Container(
@@ -81,8 +83,13 @@ class FoodItemGrid extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: FavoriteIconWidget(
               onTapFavoriteIcon: () {
-                foodController.addFavoriteFoodItem(foodItem);
+                if (isFavorite) {
+                  foodController.removeFavoriteFoodItem(foodItem);
+                } else {
+                  foodController.addFavoriteFoodItem(foodItem);
+                }
               },
+              isFavorite: isFavorite,
             ),
           ),
         ),

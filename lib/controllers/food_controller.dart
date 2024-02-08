@@ -63,6 +63,10 @@ class FoodController extends GetxController {
     _favoriteFoodItemsList.add(foodItem);
   }
 
+  void removeFavoriteFoodItem(FoodItem foodItem) {
+    _favoriteFoodItemsList.remove(foodItem);
+  }
+
   void searchFoodItems(String query) {
     if (query.isEmpty) {
       _filteredFoodItemsList.assignAll(_foodItemsList);

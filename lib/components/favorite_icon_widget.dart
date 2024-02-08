@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class FavoriteIconWidget extends StatelessWidget {
   final void Function()? onTapFavoriteIcon;
-  const FavoriteIconWidget({super.key, required this.onTapFavoriteIcon});
+  final bool isFavorite;
+
+  const FavoriteIconWidget(
+      {super.key, required this.onTapFavoriteIcon, required this.isFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +18,8 @@ class FavoriteIconWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: onTapFavoriteIcon,
         child: Icon(
-          Icons.favorite_border,
-          color: Colors.grey.shade600,
+          isFavorite ? Icons.favorite : Icons.favorite_border,
+          color: isFavorite ? Colors.red : Colors.grey.shade600,
           size: 18,
         ),
       ),

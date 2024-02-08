@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:recipe_app/controllers/gloabl_bindings.dart';
+import 'package:recipe_app/controllers/global_bindings.dart';
 import 'package:recipe_app/pages/bottom_nav.dart';
 
 void main() {

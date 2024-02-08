@@ -123,8 +123,20 @@ class DetailFoodItemGrid extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           child: Align(
             alignment: Alignment.topRight,
-            child: FavoriteIconWidget(onTapFavoriteIcon: () {
-              foodController.addFavoriteFoodItem(foodItem);
+            child: Obx(() {
+              bool isFavorite =
+                  foodController.favoriteFoodItemsList.contains(foodItem);
+
+              return FavoriteIconWidget(
+                onTapFavoriteIcon: () {
+                  if (isFavorite) {
+                    foodController.removeFavoriteFoodItem(foodItem);
+                  } else {
+                    foodController.addFavoriteFoodItem(foodItem);
+                  }
+                },
+                isFavorite: isFavorite,
+              );
             }),
           ),
         )
@@ -132,3 +144,18 @@ class DetailFoodItemGrid extends StatelessWidget {
     );
   }
 }
+
+
+
+// child: FavoriteIconWidget(
+//               onTapFavoriteIcon: () {
+//                 if (isFavorite.value) {
+//                   isFavorite.value = false;
+//                   foodController.removeFavoriteFoodItem(foodItem);
+//                 } else {
+//                   isFavorite.value = true;
+//                   foodController.addFavoriteFoodItem(foodItem);
+//                 }
+//               },
+//               isFavorite: isFavorite.value,
+//             ),
