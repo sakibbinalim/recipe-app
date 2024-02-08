@@ -9,10 +9,6 @@ class FoodItemGrid extends StatelessWidget {
 
   FoodItemGrid({super.key});
 
-  void addToFavorite(FoodItem favoriteFoodItem) {
-    foodController.addFavoriteFoodItem(favoriteFoodItem);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -85,7 +81,7 @@ class FoodItemGrid extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: FavoriteIconWidget(
               onTapFavoriteIcon: () {
-                addToFavorite(foodItem);
+                foodController.addFavoriteFoodItem(foodItem);
               },
             ),
           ),

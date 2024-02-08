@@ -4,7 +4,7 @@ import 'package:recipe_app/models/food_item.dart';
 class FoodController extends GetxController {
   final RxList<FoodItem> _foodItemsList = <FoodItem>[
     FoodItem(
-      title: 'Chorizo & mozzarella gnocchi bake',
+      title: 'Chorizo & mozzarella gnocchi bake & mozzarella gnocchi bake',
       category: 'Vegetarian',
       calorie: '300 kcal',
       time: '30 mins',
