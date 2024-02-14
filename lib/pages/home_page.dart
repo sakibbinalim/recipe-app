@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: const Color(0xE5D9D9D9),
+        surfaceTintColor: Colors.transparent,
       ),
       body: SafeArea(
         child: Container(

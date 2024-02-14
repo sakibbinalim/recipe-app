@@ -18,7 +18,7 @@ class BottomNav extends StatelessWidget {
         return BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: const Color(0xE5D9D9D9),
-          selectedItemColor: const Color(0xFF00B3BF),
+          selectedItemColor: Colors.black,
           showSelectedLabels: false,
           showUnselectedLabels: false,
           selectedIconTheme: const IconThemeData(),
@@ -26,16 +26,32 @@ class BottomNav extends StatelessWidget {
           onTap: (index) {
             bottomNavController.changePage(index);
           },
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.bookmark), label: 'Category'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.favorite), label: 'Favorites'),
-            BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
+          items: [
+            _buildBottomNavigationBarItem(Icons.home, 'Home', 0),
+            _buildBottomNavigationBarItem(Icons.bookmark, 'Category', 1),
+            _buildBottomNavigationBarItem(Icons.favorite, 'Favorites', 2),
+            _buildBottomNavigationBarItem(Icons.add, 'Add', 3),
           ],
         );
       }),
+    );
+  }
+
+  BottomNavigationBarItem _buildBottomNavigationBarItem(
+      IconData icon, String label, int index) {
+    bool isSelected = index == bottomNavController.currentIndex.value;
+    return BottomNavigationBarItem(
+      icon: Container(
+        padding: const EdgeInsets.all(15),
+        decoration: isSelected
+            ? BoxDecoration(
+                shape: BoxShape.circle,
+                color: const Color(0xFF00B4BF).withOpacity(0.3),
+              )
+            : null,
+        child: Icon(icon),
+      ),
+      label: label,
     );
   }
 }

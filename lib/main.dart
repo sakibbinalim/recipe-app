@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipe_app/controllers/global_bindings.dart';
-import 'package:recipe_app/pages/bottom_nav.dart';
+import 'package:recipe_app/pages/splash_screen.dart';
 
 void main() {
   GlobalBindings().dependencies();
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: BottomNav(),
+      home: const SplashScreen(),
     );
   }
 }
