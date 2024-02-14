@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 30).copyWith(top: 40),
+          margin: const EdgeInsets.symmetric(horizontal: 30).copyWith(top: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                 onSearch: (query) => foodController.searchFoodItems(query),
               ),
               const SizedBox(height: 20),
-              DetailFoodItemGrid(),
+              FoodItemGrid(),
             ],
           ),
         ),
