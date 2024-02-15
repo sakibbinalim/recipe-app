@@ -53,6 +53,8 @@ class FoodItemGrid extends StatelessWidget {
               children: [
                 Text(
                   foodItem.title,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     // color: Colors.white,
                     fontSize: 15.0,
@@ -65,6 +67,8 @@ class FoodItemGrid extends StatelessWidget {
                 ),
                 Text(
                   foodItem.title,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,

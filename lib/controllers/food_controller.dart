@@ -31,7 +31,7 @@ class FoodController extends GetxController {
       ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'],
     ),
     FoodItem(
-      title: 'Shrimp Taco',
+      title: 'Shrimp & Cheese Taco',
       category: 'Non-Vegetarian',
       calorie: '500 kcal',
       time: '45 mins',
