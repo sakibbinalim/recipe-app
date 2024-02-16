@@ -4,8 +4,11 @@ class FavoriteIconWidget extends StatelessWidget {
   final void Function()? onTapFavoriteIcon;
   final bool isFavorite;
 
-  const FavoriteIconWidget(
-      {super.key, required this.onTapFavoriteIcon, required this.isFavorite});
+  const FavoriteIconWidget({
+    super.key,
+    required this.onTapFavoriteIcon,
+    required this.isFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipe_app/components/detail_food_item_grid.dart';
 import 'package:recipe_app/components/food_item_grid.dart';
+import 'package:recipe_app/components/food_item_list_view.dart';
 import 'package:recipe_app/components/search_text_field.dart';
 import 'package:recipe_app/controllers/food_controller.dart';
 
@@ -50,7 +51,12 @@ class HomePage extends StatelessWidget {
                 onSearch: (query) => foodController.searchFoodItems(query),
               ),
               const SizedBox(height: 20),
-              FoodItemGrid(),
+
+              // toggle button
+
+              // FoodItemGrid(),
+              // DetailFoodItemGrid(),
+              const FoodItemListView(),
             ],
           ),
         ),

@@ -86,7 +86,7 @@ class DetailFoodItemGrid extends StatelessWidget {
                       image: AssetImage('assets/images/calories.png'),
                       height: 12,
                     ),
-                    const SizedBox(width: 2),
+                    const SizedBox(width: 3),
                     // calorie
                     Text(
                       foodItem.calorie,
@@ -108,6 +108,7 @@ class DetailFoodItemGrid extends StatelessWidget {
                       size: 13,
                       color: Colors.grey,
                     ),
+                    const SizedBox(width: 3),
                     // time
                     Text(
                       foodItem.time ?? '',

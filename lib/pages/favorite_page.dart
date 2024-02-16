@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:recipe_app/components/favorite_icon_widget.dart';
 import 'package:recipe_app/controllers/food_controller.dart';
 import 'package:recipe_app/models/food_item.dart';
 
@@ -129,6 +130,27 @@ class FavoritePage extends StatelessWidget {
             ),
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Align(
+            alignment: Alignment.topRight,
+            child: Obx(() {
+              bool isFavorite =
+                  _foodController.favoriteFoodItemsList.contains(foodItem);
+
+              return FavoriteIconWidget(
+                onTapFavoriteIcon: () {
+                  if (isFavorite) {
+                    _foodController.removeFavoriteFoodItem(foodItem);
+                  } else {
+                    _foodController.addFavoriteFoodItem(foodItem);
+                  }
+                },
+                isFavorite: isFavorite,
+              );
+            }),
+          ),
+        )
       ],
     );
   }
