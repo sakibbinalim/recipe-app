@@ -33,12 +33,12 @@ dependencies:
     sdk: flutter
   flutter_native_splash: ^2.3.10
   get: ^4.6.6
+  toggle_switch: ^2.1.0
 
 flutter_native_splash:
   # android: true
   # ios: true
   # web: false
-
   background_image: "assets/images/splash.png"
 
   android_12:

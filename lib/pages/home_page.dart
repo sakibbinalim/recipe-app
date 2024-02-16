@@ -1,5 +1,9 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:recipe_app/controllers/toggle_button_controller.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 import 'package:recipe_app/components/detail_food_item_grid.dart';
 import 'package:recipe_app/components/food_item_grid.dart';
 import 'package:recipe_app/components/food_item_list_view.dart';
@@ -12,6 +16,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FoodController foodController = Get.find<FoodController>();
+    final ToggleButtonController toggleButtonController =
+        Get.find<ToggleButtonController>();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -50,13 +56,39 @@ class HomePage extends StatelessWidget {
               SearchTextField(
                 onSearch: (query) => foodController.searchFoodItems(query),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
 
               // toggle button
-
-              // FoodItemGrid(),
-              // DetailFoodItemGrid(),
-              const FoodItemListView(),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Obx(() {
+                  return ToggleSwitch(
+                    minWidth: 50,
+                    minHeight: 30,
+                    inactiveBgColor: Colors.white,
+                    inactiveFgColor: Colors.grey[600],
+                    cornerRadius: 5,
+                    initialLabelIndex:
+                        toggleButtonController.currentIndex.value,
+                    totalSwitches: toggleButtonController.views.length,
+                    icons: const [
+                      Icons.grid_view_rounded,
+                      Icons.view_list,
+                      Icons.grid_on_rounded
+                    ],
+                    dividerColor: Colors.grey,
+                    borderWidth: 1.2,
+                    borderColor: const [Colors.grey],
+                    onToggle: (index) {
+                      toggleButtonController.changeView(index!);
+                    },
+                  );
+                }),
+              ),
+              const SizedBox(height: 10),
+              Obx(() {
+                return toggleButtonController.currentView;
+              }),
             ],
           ),
         ),
