@@ -1,12 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recipe_app/controllers/toggle_button_controller.dart';
 import 'package:toggle_switch/toggle_switch.dart';
-import 'package:recipe_app/components/detail_food_item_grid.dart';
-import 'package:recipe_app/components/food_item_grid.dart';
-import 'package:recipe_app/components/food_item_list_view.dart';
 import 'package:recipe_app/components/search_text_field.dart';
 import 'package:recipe_app/controllers/food_controller.dart';
 
