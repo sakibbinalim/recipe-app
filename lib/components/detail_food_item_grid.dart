@@ -145,18 +145,3 @@ class DetailFoodItemGrid extends StatelessWidget {
     );
   }
 }
-
-
-
-// child: FavoriteIconWidget(
-//               onTapFavoriteIcon: () {
-//                 if (isFavorite.value) {
-//                   isFavorite.value = false;
-//                   foodController.removeFavoriteFoodItem(foodItem);
-//                 } else {
-//                   isFavorite.value = true;
-//                   foodController.addFavoriteFoodItem(foodItem);
-//                 }
-//               },
-//               isFavorite: isFavorite.value,
-//             ),
