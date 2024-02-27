@@ -55,6 +55,7 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 20),
               SearchTextField(
                 onSearch: (query) => foodController.searchFoodItems(query),
+                initialQuery: foodController.searchQuery.value,
               ),
               const SizedBox(height: 10),
 

@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 
 class SearchTextField extends StatelessWidget {
   final Function(String) onSearch;
+  final String initialQuery;
 
-  const SearchTextField({super.key, required this.onSearch});
+  const SearchTextField(
+      {super.key, required this.onSearch, required this.initialQuery});
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController controller =
+        TextEditingController(text: initialQuery);
     return TextField(
+      controller: controller,
       onTapOutside: (event) {
         FocusManager.instance.primaryFocus?.unfocus();
       },

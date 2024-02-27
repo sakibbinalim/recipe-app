@@ -41,17 +41,20 @@ class FoodController extends GetxController {
     ),
   ].obs;
 
+  final RxString _searchQuery = ''.obs;
   final RxList<FoodItem> _filteredFoodItemsList = <FoodItem>[].obs;
   final RxList<FoodItem> _favoriteFoodItemsList = <FoodItem>[].obs;
 
   RxList<FoodItem> get foodItemsList => _foodItemsList;
   RxList<FoodItem> get filteredFoodItemsList => _filteredFoodItemsList;
   RxList<FoodItem> get favoriteFoodItemsList => _favoriteFoodItemsList;
+  RxString get searchQuery => _searchQuery;
 
   @override
   void onInit() {
     super.onInit();
     _filteredFoodItemsList.assignAll(_foodItemsList);
+    _searchQuery.value = '';
   }
 
   void addFoodItem(FoodItem foodItem) {
@@ -68,6 +71,7 @@ class FoodController extends GetxController {
   }
 
   void searchFoodItems(String query) {
+    _searchQuery.value = query;
     if (query.isEmpty) {
       _filteredFoodItemsList.assignAll(_foodItemsList);
     } else {
